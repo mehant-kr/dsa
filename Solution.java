@@ -25,6 +25,7 @@ class ListNode {
 // - merge it O(n) # ####
 public class Solution {
     ListNode head;
+
     // Adding
     public void add(int val) {
         ListNode newNode = new ListNode(val);
@@ -48,7 +49,7 @@ public class Solution {
         }
     }
 
-    public void reorderList(ListNode head) {
+    private void reorderList(ListNode head) {
 
         // Slicing the linked list in half
         ListNode prev = null;
@@ -66,19 +67,21 @@ public class Solution {
         // slow = head of second half
 
         // Reversing the second half
-        
-
     }
-    // [4][B]->[5][C]->[6][null]    
-    private void reverse(ListNode head) {
-        if (head == null) return;
+
+    // [4][B]->[5][C]->[6][null]
+    private ListNode reverse(ListNode head) {
+        ListNode current = head;
+        if (current == null)
+            return null;
 
         ListNode prev = head;
         System.out.println("prev: " + prev.val);
-        reverse(head.next);
-        System.out.println("head: " + head.val);
+        reverse(current.next);
+        System.out.println("head: " + current.val);
         // System.out.println("head.next: " + head.next.val);
-        head.next = prev;
+        current.next = prev;
+        return current;
     }
 
     public static void main(String[] args) {
@@ -87,7 +90,7 @@ public class Solution {
         l.add(5);
         l.add(6);
         l.add(7);
-        // l.reverse(l.head);
+        l.reverse(l.head);
         l.printList(l.head);
     }
 
